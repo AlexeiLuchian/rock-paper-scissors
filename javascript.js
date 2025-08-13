@@ -17,7 +17,7 @@ function getComputerChoice() {
 
 function getHumanChoice(){
     let choiceValid = false;
-    let humanChoice = prompt("Make your choice! rock, paper or scissors: ");
+    let humanChoice = prompt("Make your choice! rock, paper or scissors: ").toLowerCase();
     while (!choiceValid){
         if (humanChoice === "rock"
             || humanChoice === "paper"
@@ -31,4 +31,59 @@ function getHumanChoice(){
     return humanChoice;
 }
 
-console.log(getHumanChoice());
+function playRound(humanChoice, computerChoice) {
+    
+    if (humanChoice === computerChoice) {
+        console.log("You'll probably go to a wedding. It's a tie.");
+        console.log(`Human ${humanScore} - ${computerScore} Computer`);
+        return;
+    }
+
+    if (humanChoice === "rock") {
+        if (computerChoice === "paper") {
+            console.log(`Damn u unlucky! ${computerChoice} beats ${humanChoice}`);
+            computerScore++;
+        } else {
+            console.log(`Daaaamn boy, u on fire! ${humanChoice} beats ${computerChoice}`);
+            humanScore++;
+        }
+    } else if (humanChoice == "paper") {
+        if (computerChoice === "scissors") {
+            console.log(`Damn u unlucky! ${computerChoice} beats ${humanChoice}`);
+            computerScore++;
+        } else {
+            console.log(`Daaaamn boy, u on fire! ${humanChoice} beats ${computerChoice}`);
+            humanScore++;
+        }
+    } else {
+        if (computerChoice === "rock") {
+            console.log(`Damn u unlucky! ${computerChoice} beats ${humanChoice}`);
+            computerScore++;
+        } else {
+            console.log(`Daaaamn boy, u on fire! ${humanChoice} beats ${computerChoice}`);
+            humanScore++;
+        }
+    }
+    console.log(`Human ${humanScore} - ${computerScore} Computer`);
+}
+
+function playGame(){
+    let gameOver = false;
+
+    while (!gameOver){
+        playRound(getHumanChoice(), getComputerChoice());
+        if (humanScore === 5) {
+            console.log("The humanity finally WON!!!");
+            gameOver = true;
+        }
+        if (computerScore === 5) {
+            console.log("Meeeh, nothing special. (computer wins)");
+            gameOver = true;
+        }
+    }
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
+playGame();
