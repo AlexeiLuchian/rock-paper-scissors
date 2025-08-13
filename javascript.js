@@ -15,6 +15,20 @@ function getComputerChoice() {
     return computerChoice
 }
 
+function getHumanChoice(){
+    let choiceValid = false;
+    let humanChoice = prompt("Make your choice! rock, paper or scissors: ");
+    while (!choiceValid){
+        if (humanChoice === "rock"
+            || humanChoice === "paper"
+            || humanChoice === "scissors" ) {
+                choiceValid = true;
+            } else {
+                alert("This wasn't an option you schewpid! Try again!");
+                humanChoice = prompt("Make your choice! rock, paper or scissors: ");
+            }
+    }
+    return humanChoice;
+}
 
-
-console.log(getComputerChoice());
+console.log(getHumanChoice());
